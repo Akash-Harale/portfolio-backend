@@ -9,8 +9,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS Configuration
+const corsOptions = {
+  origin: 'http://localhost:3000', // Frontend URL (adjust if your frontend runs on a different port)
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+};
+
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions)); // Apply CORS middleware with the options
 app.use(express.json());
 
 // Routes
