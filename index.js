@@ -16,6 +16,10 @@ app.use(express.json());
 // Routes
 app.use("/contact", contactRouter);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Contact API");
+});
+
 // Start server
 app.listen(PORT, () => {
   try {
