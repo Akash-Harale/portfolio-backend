@@ -1,3 +1,4 @@
+const { response } = require("express");
 const { AddNewMessage } = require("../models/contact.model");
 
 const addNewMessage = async (req, res) => {
@@ -7,17 +8,15 @@ const addNewMessage = async (req, res) => {
     return res.status(400).json({ error: "All fields are required" });
   }
 
-  try {
-    const newMessage = new AddNewMessage({ name, email, subject, message });
-    console.log(newMessage);
-    await newMessage.save();
-    res.status(200).send("Message sent successfully");
-  } catch (error) {
-    console.error("error while storing data to database:", error);
-    return res
-      .status(500)
-      .json({ error: "error while storing data to database" });
-  }
+  const newMessage = new AddNewMessage(req.body);
+  newMessage.save((err, response) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    } else {
+      res.status(200).send(response);
+    }
+  });
+  res.status(200).send("Message sent successfully");
 };
 
 module.exports = {
