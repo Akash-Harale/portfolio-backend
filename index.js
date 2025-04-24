@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.use("/recruiter", recruiterRouter);
 
-app.listen(3000, async () => {
+app.listen(4000, async () => {
   try {
     await connectToDatabase;
     console.log("Connected to MongoDB");
