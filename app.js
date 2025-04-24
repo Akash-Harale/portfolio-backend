@@ -1,25 +1,27 @@
 const express = require("express");
+const cors = require("cors");
+const router = require("./routes/recruiter.routes");
 const { connectToDatabase } = require("./db");
-const { contactRouter } = require("./routes/contact.routes");
 require("dotenv").config();
-
-const port = process.env.PORT || 4000;
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/contact", contactRouter);
+app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello from the server");
 });
 
-app.listen(port, async () => {
+app.use("/recruiter", router);
+
+app.listen(4000, async () => {
   try {
     await connectToDatabase;
-    console.log("Server is running on port ", port);
+    console.log("Connected to the database");
+    console.log("Server is running on port 4000");
   } catch (error) {
-    console.log("Error connecting to the database:", error);
+    console.log("Error connecting to the database", error);
   }
 });

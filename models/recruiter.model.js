@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const addNewMessageSchema = new mongoose.Schema(
+const recruiterSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -18,16 +19,11 @@ const addNewMessageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
-  { versionKey: false }
+  { timestamps: true }
 );
-
-const AddNewMessage = mongoose.model("contact", addNewMessageSchema);
+const RecruiterModel = mongoose.model("Recruiter", recruiterSchema);
 
 module.exports = {
-  AddNewMessage,
+  RecruiterModel,
 };
