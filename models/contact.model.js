@@ -23,7 +23,7 @@ const addNewMessageSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-
+  { versionKey: false }
 );
 
 const AddNewMessage = mongoose.model("contact", addNewMessageSchema);
