@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { connectToDatabase } = require("./db");
+const { recruiterRouter } = require("./routes/recruiter.routes");
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/recruiter", recruiterRouter);
 
 app.listen(3000, async () => {
   try {
