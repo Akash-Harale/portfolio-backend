@@ -18,7 +18,7 @@ app.use("/recruiter", router);
 
 app.listen(4000, async () => {
   try {
-    await connectToDatabase;
+    await connectToDatabase();
     console.log("Connected to the database");
     console.log("Server is running on port 4000");
   } catch (error) {
