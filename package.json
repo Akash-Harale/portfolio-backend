@@ -2,18 +2,25 @@
   "name": "portfolio-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akash-Harale/portfolio-backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akash-Harale/portfolio-backend/issues"
+  },
+  "homepage": "https://github.com/Akash-Harale/portfolio-backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongodb": "^6.16.0",
     "mongoose": "^8.13.2",
     "nodemon": "^3.1.10"
   }
