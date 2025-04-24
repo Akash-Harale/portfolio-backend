@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.listen(port, async () => {
   try {
-    await connectToDatabase();
+    await connectToDatabase;
     console.log("Server is running on port ", port);
   } catch (error) {
     console.log("Error connecting to the database:", error);

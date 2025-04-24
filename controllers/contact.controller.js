@@ -16,7 +16,6 @@ const addNewMessage = async (req, res) => {
     console.error("Error saving message:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
-  res.status(200).send("Message sent successfully");
 };
 
 module.exports = {
