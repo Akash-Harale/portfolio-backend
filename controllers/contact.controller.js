@@ -1,31 +1,25 @@
-const { ContactModel } = require("../models/contact.model");
+const { AddNewMessage } = require("../models/contact.model");
 
-const contact = async (req, res) => {
+const addNewMessage = async (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  // Simple validation
   if (!name || !email || !subject || !message) {
-    return res.status(400).json({ error: "All fields are required." });
+    return res.status(400).json({ error: "All fields are required" });
   }
 
   try {
-    // Save contact message to the database
-    const newContact = new ContactModel({
-      name,
-      email,
-      subject,
-      message,
-    });
-
-    await newContact.save();
-
-    // Send a response
-    return res.status(201).json({ message: "Message sent successfully." });
+    const newMessage = new AddNewMessage({ name, email, subject, message });
+    console.log(newMessage);
+    await newMessage.save();
+    res.status(200).send("Message sent successfully");
   } catch (error) {
-    return res.status(500).json({ error: "Internal server error." });
+    console.error("error while storing data to database:", error);
+    return res
+      .status(500)
+      .json({ error: "error while storing data to database" });
   }
 };
 
 module.exports = {
-  contact,
+  addNewMessage,
 };

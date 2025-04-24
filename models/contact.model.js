@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const contactSchema = mongoose.Schema(
+const addNewMessageSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -18,10 +18,16 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  { timestamps: true },
-  { versionKey: false }
-);
-const ContactModel = mongoose.model("Contact", contactSchema);
 
-module.exports = { ContactModel };
+);
+
+const AddNewMessage = mongoose.model("contact", addNewMessageSchema);
+
+module.exports = {
+  AddNewMessage,
+};
